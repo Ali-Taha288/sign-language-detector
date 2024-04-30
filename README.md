@@ -1,6 +1,6 @@
-# Project Title
+# Sign Language Detector
 
-Brief description of your project.
+Sign Language Detector using KArSL dataset with arabic sign languages.
 
 ## Table of Contents
 - [Introduction](#introduction)

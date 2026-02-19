@@ -85,32 +85,6 @@ The project supports **multi-signer data** and focuses on **20 sign classes**.
 - Converted to **TensorFlow Lite (`.tflite`)**
 - Suitable for mobile and edge-device deployment
 
----
-
-## 📂 Project Structure
-├── data/
-│ ├── Train/
-│ ├── Test/
-│
-├── keypoints/
-│ ├── train_keypoints.csv
-│ ├── test_keypoints.csv
-│
-├── models/
-│ ├── cnn_model.h5
-│ ├── cnn_lstm_model.h5
-│ ├── cnn_lstm_model.tflite
-│
-├── notebooks/
-│ └── sign_language_pipeline.ipynb
-│
-├── logs/
-│ └── tensorboard/
-│
-├── README.md
-
-
----
 
 ## 🛠️ Technologies Used
 

@@ -1,45 +1,132 @@
-# Sign Language Detector
+# 🧠 Sign Language Recognition using CNN, CNN-LSTM & Skeleton Keypoints
 
-Sign Language Detector using KArSL dataset with arabic sign languages.
+This repository presents a complete **Sign Language Recognition (SLR)** pipeline using video data.  
+The project explores both **traditional machine learning** and **deep learning** approaches for recognizing sign language gestures from videos.
 
-## Table of Contents
-- [Introduction](#introduction)
-- [Literature Review](#literature-review)
-- [Theoretical Background](#theoretical-background)
-- [Dataset Description](#dataset-description)
-- [Application Description](#application-description)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
+---
 
-## Introduction
+## 📌 Project Description
 
-Briefly introduce sign language recognition, its importance, and the purpose of your project.
+The system processes sign language videos and applies multiple techniques:
+- Frame extraction from videos
+- Skeleton keypoint extraction using MediaPipe
+- Classification using Random Forest and SVM
+- Deep learning using CNN and CNN-LSTM architectures
+- Model evaluation and visualization
+- Model conversion to TensorFlow Lite for deployment
 
-## Literature Review
+The project supports **multi-signer data** and focuses on **20 sign classes**.
 
-Summarize the key findings from your literature review regarding the methodologies and models used in sign language recognition.
+---
 
-## Theoretical Background
+## 🔄 Pipeline Overview
 
-Explain the theoretical approaches and techniques used in sign language recognition, such as machine learning algorithms and neural networks.
+1. **Video Preprocessing**
+   - Extract frames from videos
+   - Resize frames to `224 × 224`
+   - Store frames by class label and signer
 
-## Dataset Description
+2. **Skeleton Keypoint Extraction**
+   - Uses MediaPipe Holistic
+   - Extracts left & right hand landmarks
+   - Saves `(x, y)` coordinates in CSV files
 
-Describe the dataset used in your project, including its origin, size, and composition.
+3. **Data Preparation**
+   - Load keypoints CSV files
+   - Encode labels using `LabelEncoder`
+   - Split data into training, validation, and testing sets
 
-## Application Description
+---
 
-Describe the application you are developing, its main features, and how it utilizes sign language recognition technology.
+## 🤖 Models Implemented
 
-## Installation
+### 🔹 Traditional Machine Learning
+- **Random Forest Classifier**
+  - Hyperparameter tuning using Grid Search
+- **Support Vector Machine (SVM)**
+  - Kernel and regularization tuning
 
-Provide instructions on how to install and set up your application or the dependencies required to run it.
+**Evaluation Metrics**
+- Accuracy
+- Precision
+- Recall
+- F1-score
+- Confusion Matrix
 
-## Usage
+---
 
-Provide instructions on how to use your application, including any user interfaces or commands.
+### 🔹 Deep Learning Models
 
-## Contributing
+#### 🧠 CNN Model
+- Input: RGB images
+- Convolution + Batch Normalization + MaxPooling
+- Dropout for regularization
+- Softmax classification layer
 
-Explain how others can contribute to your project, such as by reporting issues or submitting pull requests.
+#### 🧠 CNN-LSTM Model
+- CNN for spatial feature extraction
+- LSTM layers for temporal modeling
+- Designed for video sequence learning
+- Early stopping and TensorBoard logging
+
+---
+
+## 📊 Evaluation & Visualization
+
+- Confusion matrices using `ConfusionMatrixDisplay`
+- Metrics: Accuracy, Precision, Recall, F1-score, AUC
+- TensorBoard for training monitoring
+
+---
+
+## 💾 Model Saving & Deployment
+
+- Models saved in `.h5` format
+- Converted to **TensorFlow Lite (`.tflite`)**
+- Suitable for mobile and edge-device deployment
+
+---
+
+## 📂 Project Structure
+├── data/
+│ ├── Train/
+│ ├── Test/
+│
+├── keypoints/
+│ ├── train_keypoints.csv
+│ ├── test_keypoints.csv
+│
+├── models/
+│ ├── cnn_model.h5
+│ ├── cnn_lstm_model.h5
+│ ├── cnn_lstm_model.tflite
+│
+├── notebooks/
+│ └── sign_language_pipeline.ipynb
+│
+├── logs/
+│ └── tensorboard/
+│
+├── README.md
+
+
+---
+
+## 🛠️ Technologies Used
+
+- Python 3.9
+- OpenCV
+- MediaPipe
+- NumPy & Pandas
+- Scikit-learn
+- TensorFlow / Keras
+- Matplotlib
+- TensorBoard
+
+---
+
+## 🚀 How to Run
+
+1. Install dependencies:
+```bash
+pip install opencv-python mediapipe tensorflow scikit-learn pandas numpy matplotlib tqdm
